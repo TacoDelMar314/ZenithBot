@@ -1,17 +1,19 @@
+const config = require('./config');
+
 module.exports = {
   'help': {
     aliases: ['h'],
     description: 'Shows the list of commands or help on specified command.',
-    format: 'help [command-name]'
+    format: `help [command-name]`
   },
   'ping': {
     description: 'Checks connectivity with discord\'s servers.',
-    format: 'ping'
+    format: `ping`
   },
   'say': {
     aliases: ['repeat'],
     description: 'Repeats whatever is said.',
-    format: 'say <message>'
+    format: `say <message>`
   },
   'tic-tac-toe': {
     aliases: ['tictactoe','ttt'],
@@ -22,10 +24,10 @@ module.exports = {
       ['Clear','Clears the board'],
       ['Skip','Skips your turn (Why would you do this?)'],
       ['Display','Displays the board']],
-    format: 'tic-tac-toe <arguements>'
+    format: `tic-tac-toe <arguements>`
   },  
   'jeff': {
     description: 'Pings @Jeff',
-    format: 'Jeff <amount>'
+    format: `Jeff <amount>`
   }
 }

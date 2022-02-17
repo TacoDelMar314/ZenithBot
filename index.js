@@ -1,4 +1,4 @@
-  const { Client, MessageEmbed } = require('discord.js');
+const { Client, MessageEmbed } = require('discord.js');
 const config = require('./config');
 const commands = require('./help');
 
@@ -8,7 +8,7 @@ var command = "help"; //Used in the switch case to determine which command is be
 let bot = new Client({
   fetchAllMembers: true, // Remove this if the bot is in large guilds.
   presence: {
-    status: 'idle',
+    status: 'online',
     activity: {
       name: `build-a-bot`,
       type: 'PLAYING'
@@ -26,9 +26,6 @@ bot.on('message', async message => {
   if (message.content.startsWith(config.prefix)) { //Checks for '!'
     args = message.content.toLowerCase().slice(config.prefix.length).split(' ');
     command = args.shift().toLowerCase();
-  }
-  else if (message.content.startsWith(config.savefix)) { //Checks for '+'
-    args = message.content.toLowerCase().slice(config.savefix.length).split(' ');
   }
   else if (message.content.startsWith(config.deletefix)) { //Checks for '-'
     args = message.content.toLowerCase().slice(config.prefix.length).split(' ');
@@ -55,6 +52,7 @@ bot.on('message', async message => {
     default:
     case 'h':
     case 'help':
+      {
       let embed = new MessageEmbed()
         .setTitle('HELP MENU')
         .setColor('GREEN')
@@ -90,12 +88,13 @@ bot.on('message', async message => {
         }
       }
       message.channel.send(embed);
+      }
       break;
     case 'ttt':
     case 'tictactoe':
     case 'tic-tac-toe':
       var ttt = require('./tictactoe.js');
-      message.channel.send(ttt.command(args[0],args[1]));
+      message.channel.send(ttt.command(...args));
       break;
 
     case 'jeff':
@@ -110,20 +109,23 @@ bot.on('message', async message => {
       }
       break;
 
+    case 'delete':
+      if(typeof(args[0])==undefined){
+        message.delete();break;
+      }
+      for (i=0;i<args[0];i++){
+        message.delete();
+      }
+      break;
+
     case 'dm':
       message.author.createDM();
       message.author.send("alright, I dm'd you.");
       break;
-
-    case 'hangman':
-      var hangman = require('./hangman.js');
-      message.channel.send(hangman(args[0],args[1]));
-      break;
-
   }
   console.log(message.content);
 }
 );
 
-require('./server')();
-bot.login(config.token);
+//require('./server')();
+bot.login(config.token); 

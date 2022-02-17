@@ -1,6 +1,5 @@
 module.exports = {
   prefix: '!',
-  savefix: '+',
   deletefix: '-',
-  token: process.env.TOKEN
+  token: "OTQzNTEwMjc0ODQ4MjExMDE0.Yg0Gaw.95HJQ9HBC58ehzcDkbronyEkfrE"
 };

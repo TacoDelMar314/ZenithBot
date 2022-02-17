@@ -1,42 +1,40 @@
 ## Setup
 
-First of all, click on the "Lock" icon in the tab on the left. It will show you your repl's secrets. On this tab, add a new secret, set its name to `TOKEN` and its value to your discord bot token from the [discord developer dashboard](https://discord.com/developers/applications).
-Optionally, move to `index.js` and edit lines 6-12 (client configuration) as it suits you.
-Your bot is ready to launch!
+Hey, Cash! If you see this...     ...well I'm not sure what will happen.
 
 ## Configuration
 
-In the `config.js` file, you can edit your bot's command prefix as per your choice.
+If you can, can you double check that the two exports in "config.js" are '!' and '-' 
+respectfully?
 
 ## Commands
 
-The bot by default has 3 commands.
+Alrighty, all commands, from the top:
 
-**help** - Shows the list of commands or details of a specific command.
-**say**  - Repeats whatever the users tells it to.
-**ping** - Checks connectivity with discord servers.
+Ping: Pings the bot, and sends a return
 
-You can edit these commands and add more in `index.js` file.
-The help command also depends on the `help.js` file. This file contains the data that the help command displays.
+Say: (Alias: Repeat)
+     Outputs anything you say afterwards as if the bot is saying it (make sure to 
+     use the 'deletefix' to delete the command message)
 
-After creating a new command in `index.js`, go to `help.js` and add a new key-value pair to the JSON Object in the format shown below.
-```JS
-{
-  ...,
-  'command-name': {
-    aliases: ['these', 'are', 'optional'],
-    description: 'This command does xyz...',
-    format: 'command-name <my-args>'
-}
-```
+Help: (This is the default command, anything that isn't an allowed command will 
+route to here)
+     Creates an embed that describes how to basically use all the intended commands
 
-Here, `command-name` is the name of your command. `aliases` is an array of command's aliases. Note that these aliases don't take effect in the bot, they are only here to be displayed in the help command, to make these take effect, use multiple `case` statements as shown for the `say` command in `index.js`. Also the `aliases` field is optional here.
-Nextly, `description` and `format` field are necessary or it will break the help command.
-`description` is a short description of what the command does.
-`format` shows how is the user supposed to use the command. The first word is always the command name (`command-name`) followed by the arguments separated by a space (` `). The optional command arguments are enclosed within square brackets (`[]`) and the required arguments are enclosed within angular brackets (`<>`). The prefix is automatically added while displayng in the help command so be sure to not use it here.
+Tic-Tac-Toe: (Aliases: ttt, tictactoe, tic-tac-toe)
+     My tic-tac-toe game built into this bot. The AI isn't perfect, but that's what 
+     makes this game tolerable to play. '!ttt help' will give you info on how to 
+     play.
 
----
+Jeff: Pings Jeff as many times as specified (defaults to 1)
 
-## Hosting
+Delete: idk this is completely useless in every way. Failed idea that I haven't 
+     deleted to be honest. Keeping it for no reason for now
 
-The `server.js` file creates an HTTP server which in turn, generates a URL of the format `https://my-repl-name--my-username.repl.co` that you can ping using services such as uptimerobot. If you have the hacker plan, you can skip this and use the `Always on repl` feature.
+DM: Sends a sample message to your DM. This will be expanded in a future date
+
+## Things to test for now (until I set up Unit Tests lmao)
+
+"-say -ttt help" should make the bot say "-ttt help", then say "-help ttt", then display the tic-tac-toe help screen without any residual messages
+
+The tic-tac-toe game always gives me issues. Make sure it's winnable, resetable, and looks alright.

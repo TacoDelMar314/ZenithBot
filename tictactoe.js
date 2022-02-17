@@ -1,3 +1,5 @@
+const config = require('./config');
+
 var board = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Keeps track of the board
 var win = false; //Variable used to lock the game when it is over, and to keep track of how it ended
 
@@ -23,7 +25,6 @@ var displayBoard = function() {
     }
     if (i != 2) { msg += "\n⎯⎯⎯⎯⎯⎯⎯⎯\n"; }
   }
-  console.log(board);
   return msg+"\n"+checkWin();
 };
 
@@ -45,8 +46,8 @@ var checkWin = function() {
       win = true;
     }
     if (win == true) {
-      if (j == 3) { win = 'x'; return "X has won the game\nType '!tic-tac-toe clear' to clear the board";}
-      else { win = 'o'; return "O has won the game\nType '!tic-tac-toe clear' to clear the board";}
+      if (j == 3) { win = 'x'; return `X has won the game\nType '${config.prefix}ttt clear' to clear the board`;}
+      else { win = 'o'; return `O has won the game\nType '${config.prefix}ttt clear' to clear the board`;}
     }
   }
   var product = 1;
@@ -55,7 +56,7 @@ var checkWin = function() {
   } // Product will be 0 if there is an open space
   if (product != 0) {
     win = 't';
-    return "There has been a tie\nType '!tic-tac-toe clear' to clear the board";
+    return `There has been a tie\nType '${config.prefix}ttt clear' to clear the board`;
   }
   else win = false; return "";
 };
@@ -109,12 +110,12 @@ var oPlace = function() {
 var command = function(args0,args1) {
   switch(args0){
     default:
-      if (win != false){return "This board has already been won. Type !ttt clear to clear the board";}
+      if (win != false){return `This board has already been won. Type ${config.prefix}ttt clear to clear the board`;}
       if (Number(args0)>0 && Number(args0)<10) {
         if(board[Number(args0) - 1] != 0){return "That space has already been filled. Please try again";}
         else board[Number(args0) - 1] = 1; oPlace();
       }
-      else return "Sorry, I don't recognize that command. Please type '!help ttt' for a list of commands";
+      else return `Sorry, I don't recognize that command. Please type '${config.prefix}help ttt' for a list of commands`;
       break;
     case "s":
     case "skip":
@@ -122,7 +123,7 @@ var command = function(args0,args1) {
       break;
     case "h":
     case "help":
-      return "-help ttt";
+      return `${config.deletefix}help ttt`;
     case "clear":
       board = [0,0,0,0,0,0,0,0,0];
       win=false;
