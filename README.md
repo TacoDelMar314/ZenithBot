@@ -5,7 +5,8 @@ Hey, Cash! If you see this...     ...well I'm not sure what will happen.
 ## Configuration
 
 If you can, can you double check that the two exports in "config.js" are '!' and '-' 
-respectfully?
+respectfully, and the bot token is correct (I have them labeled, and one should be 
+commented out. Make sure it's the right one)
 
 ## Commands
 
@@ -35,6 +36,8 @@ DM: Sends a sample message to your DM. This will be expanded in a future date
 
 ## Things to test for now (until I set up Unit Tests lmao)
 
-"-say -ttt help" should make the bot say "-ttt help", then say "-help ttt", then display the tic-tac-toe help screen without any residual messages
+"-say -ttt help" should make the bot say "-ttt help", then say "-help ttt", then 
+display the tic-tac-toe help screen without any residual messages
 
-The tic-tac-toe game always gives me issues. Make sure it's winnable, resetable, and looks alright.
+The tic-tac-toe game always gives me issues. Make sure it's winnable, resetable, and 
+looks alright.
