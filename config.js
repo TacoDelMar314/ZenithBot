@@ -1,6 +1,6 @@
 module.exports = {
-  prefix: '|',
-  deletefix: '#',
+  prefix: '!',
+  deletefix: '-',
   //ZenithTEST
   //token: "OTQzNTEwMjc0ODQ4MjExMDE0.Yg0Gaw.95HJQ9HBC58ehzcDkbronyEkfrE"
   //Zenith
